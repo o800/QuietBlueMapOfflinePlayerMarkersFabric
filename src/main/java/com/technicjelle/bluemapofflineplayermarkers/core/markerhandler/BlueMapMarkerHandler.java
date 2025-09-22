@@ -6,6 +6,7 @@ import com.technicjelle.bluemapofflineplayermarkers.common.Config;
 import com.technicjelle.bluemapofflineplayermarkers.common.Server;
 import com.technicjelle.bluemapofflineplayermarkers.core.Player;
 import com.technicjelle.bluemapofflineplayermarkers.core.Singletons;
+import com.technicjelle.bluemapofflineplayermarkers.core.fileloader.FileMarkerLoader;
 import com.technicjelle.bluemapofflineplayermarkers.impl.fabric.BluemapOfflinePlayerMarkers;
 import de.bluecolored.bluemap.api.BlueMapAPI;
 import de.bluecolored.bluemap.api.BlueMapMap;
@@ -66,7 +67,7 @@ public class BlueMapMarkerHandler implements MarkerHandler {
             markerSet.put(player.getPlayerUUID().toString(), markerBuilder.build());
         }
 
-        BluemapOfflinePlayerMarkers.LOGGER.info("Marker for {} added", player.getPlayerName());
+        FileMarkerLoader.markers_added++;
     }
 
     @Override

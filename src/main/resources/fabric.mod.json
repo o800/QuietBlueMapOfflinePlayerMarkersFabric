@@ -2,14 +2,15 @@
   "schemaVersion": 1,
   "id": "bluemapofflineplayermarkers",
   "version": "${version}",
-  "name": "BlueMapOfflinePlayerMarkers",
-  "description": "Adds markers where players have logged off to BlueMap",
+  "name": "QuiteBlueMapOfflinePlayerMarkers",
+  "description": "Adds markers where players have logged off to BlueMap, without spamming the server console",
   "authors": [
     "TechnicJelle",
     "Mark-255",
     "Blue",
     "Seercat3160",
-    "Syorito Hatsuki"
+    "Syorito Hatsuki",
+    "o800"
   ],
   "contact": {
     "homepage": "https://github.com/TechnicJelle/BlueMapOfflinePlayerMarkers"

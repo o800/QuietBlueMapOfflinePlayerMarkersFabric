@@ -10,13 +10,16 @@ import de.bluecolored.bluenbt.NBTReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.time.Instant;
 import java.util.UUID;
 import java.util.stream.Stream;
 import java.util.zip.GZIPInputStream;
 
 public class FileMarkerLoader {
     private static final BlueNBT nbt = new BlueNBT();
+
+    public static int files_loaded = 0;
+    public static int markers_added = 0;
+    public static int expired_players = 0;
 
     public static void loadOfflineMarkers() {
         Path playerDataFolder = Singletons.getServer().getPlayerDataFolder();
@@ -45,11 +48,12 @@ public class FileMarkerLoader {
         } catch (IOException e) {
             BluemapOfflinePlayerMarkers.LOGGER.error("Failed to stream playerdata", e);
         }
+        BluemapOfflinePlayerMarkers.LOGGER.info("{} playerdata files loaded, {} markers added, and {} expired player markers not added", files_loaded, markers_added, expired_players);
     }
 
     private static void loadOfflineMarker(Path playerDataFile, BlueMapAPI api) {
         final String fileName = playerDataFile.getFileName().toString();
-        BluemapOfflinePlayerMarkers.LOGGER.info("Loading playerdata file: " + fileName);
+        files_loaded++;
 
         final String uuidString = fileName.replace(".dat", "");
         final UUID playerUUID;
@@ -68,9 +72,7 @@ public class FileMarkerLoader {
         if (Singletons.getServer().isPlayerOnline(playerUUID)) return; // don't add markers for online players
 
         if (Singletons.getConfig().checkPlayerLastPlayed(playerUUID)) {
-            String playerName = Singletons.getServer().getPlayerName(playerUUID);
-            Instant lastPlayed = Singletons.getServer().getPlayerLastPlayed(playerUUID);
-            BluemapOfflinePlayerMarkers.LOGGER.warn("Player {} ({}) was last online at {},\nwhich is more than {} hours ago, so not adding marker", playerName, playerUUID, lastPlayed.toString(), Singletons.getConfig().getExpireTimeInHours());
+            expired_players++;
             return;
         }
 
