@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "id": "bluemapofflineplayermarkers",
+  "id": "quietbluemapofflineplayermarkers",
   "version": "${version}",
-  "name": "QuiteBlueMapOfflinePlayerMarkers",
+  "name": "QuietBlueMapOfflinePlayerMarkers",
   "description": "Adds markers where players have logged off to BlueMap, without spamming the server console",
   "authors": [
     "TechnicJelle",
@@ -40,5 +40,8 @@
   },
   "suggests": {
     "fstats-api": "*"
+  },
+  "breaks": {
+    "bluemapofflineplayermarkers": "*"
   }
 }
