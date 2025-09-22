@@ -1,4 +1,6 @@
-# BlueMap Offline Player Markers (Fabric)
+# Quiet BlueMap Offline Player Markers (Fabric)
+
+A fork of [BlueMap Offline Player Markers (Fabric)](https://github.com/syorito-hatsuki/BlueMapOfflinePlayerMarkersFabric) with the console messages for loading playerdata, creating offline player marker, and not creating offline player marker becauase of expire time removed to reduce console clutter on servers with a lot of players.
 
 Adds markers in the positions where players have logged off to [BlueMap](https://github.com/BlueMap-Minecraft/BlueMap).
 
