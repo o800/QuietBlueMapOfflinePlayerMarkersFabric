@@ -66,7 +66,6 @@ public class BlueMapMarkerHandler implements MarkerHandler {
             markerSet.put(player.getPlayerUUID().toString(), markerBuilder.build());
         }
 
-        BluemapOfflinePlayerMarkers.LOGGER.info("Marker for {} added", player.getPlayerName());
     }
 
     @Override
