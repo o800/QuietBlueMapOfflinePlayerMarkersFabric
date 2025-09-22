@@ -49,7 +49,6 @@ public class FileMarkerLoader {
 
     private static void loadOfflineMarker(Path playerDataFile, BlueMapAPI api) {
         final String fileName = playerDataFile.getFileName().toString();
-        BluemapOfflinePlayerMarkers.LOGGER.info("Loading playerdata file: " + fileName);
 
         final String uuidString = fileName.replace(".dat", "");
         final UUID playerUUID;
@@ -70,7 +69,6 @@ public class FileMarkerLoader {
         if (Singletons.getConfig().checkPlayerLastPlayed(playerUUID)) {
             String playerName = Singletons.getServer().getPlayerName(playerUUID);
             Instant lastPlayed = Singletons.getServer().getPlayerLastPlayed(playerUUID);
-            BluemapOfflinePlayerMarkers.LOGGER.warn("Player {} ({}) was last online at {},\nwhich is more than {} hours ago, so not adding marker", playerName, playerUUID, lastPlayed.toString(), Singletons.getConfig().getExpireTimeInHours());
             return;
         }
 
